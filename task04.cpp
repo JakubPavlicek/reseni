@@ -9,7 +9,6 @@ using namespace std;
 
 struct Animal {
 
-  char buffer[48];
   const char* name;
   const char* say;
   virtual void whatDoesItSay() = 0;
