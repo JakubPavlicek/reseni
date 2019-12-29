@@ -1,164 +1,141 @@
 /*
   Write a "task03" program for basic adding. It should handle -f, -i and -v parameters
-  task03 -f data.txt // outputs sum of numbers in data.txt
-  task03 -i // interactive mode: sums numbers from standard input until empty input provided
-  task03 4 7 12 // outputs sum of any number of arguments (23 in this case)
+  --task03 -f data.txt // outputs sum of numbers in data.txt
+  --task03 -i // interactive mode: sums numbers from standard input until empty input provided
+  --task03 4 7 12 // outputs sum of any number of arguments (23 in this case)
   implement verbose mode -v, which outputs additional info about arguments, i.e.
-    task03 -f data.txt -v // should print "sum of numbers in data.txt is 13"
-    task03 -v -f data.txt // same result
-    task03 -v -i // should print like "sum of 7 numbers from standard input is 38"
-    task03 2 2 13 6 -v // should print "sum of 4 arguments is 23"
-    task03 -v 13 4 // should print "sum of 2 arguments is 17"
+    --task03 -f data.txt -v // should print "sum of numbers in data.txt is 13"
+    --task03 -v -f data.txt // same result
+    --task03 -v -i // should print like "sum of 7 numbers from standard input is 38"
+    --task03 2 2 13 6 -v // should print "sum of 4 arguments is 23"
+    --task03 -v 13 4 // should print "sum of 2 arguments is 17"
 */
 
 #include <iostream>
 #include <string>
 #include <cstring>
 #include <cstdio>
+
 using namespace std;
 
-int vf(int argc, char* argv[]){
-
-  char fileCont[255];   
-  int i;                
-  int vysledek = 0;     
-  int cisla[80];
-  bool verbose = 1;
-
-  if(strcmp(argv[1], "-v") == 0 && strcmp(argv[2], "-f") == 0){
-    FILE *fp = fopen(argv[3], "r");
-    verbose;
-
-    do{
-      sscanf(fileCont, "%d", &i); // funkce sscanf v tomto případě načítá čísla ze souboru
-      vysledek += i;
-    }
-
-    while(fscanf(fp, "%s", fileCont) != EOF); // funkce fscanf čte ze souboru, v tomto případě čte text
-
-  }
-
-  printf("\b\bsum of numbers in %s is %d", argv[3], vysledek);
-
-  return 0;
+int arg(int argc, char* argv[]){
+    int sum = 0;
+    int num;
+        for(int z = 1; z < argc; z++){
+          if(strcmp(argv[z], "-v") != 0){
+            sscanf(argv[z], "%d", &num);
+            sum += num;
+          }
+        }
+        printf("sum of %d arguments is %d", argc - 2, sum);
+        exit(1);
 }
 
-int v(int argc, char* argv[]){
+int main(int argc, char* argv[]){
 
-    char fileCont[255];   // proměnná char mi definuje charaktery, složená závorka mi nastavuje velikost charakterů na 255
-    int i;                
-    int vysledek = 0;     // proměnná int mi definuje celá čísla  
-    int cisla[80];
-    bool verbose = 1;
+char fileCont[255];  
+int x;                
+int vysledek = 0;      
+int cisla[80];
 
-    if(strcmp(argv[3], "-v") == 0){     // pokud se argv[1] a "-f" rovnají funkce vrací 0
-      FILE *fp = fopen(argv[2], "r");   // otevře soubor, který bude na 3. pozici v konzoli (protože argv[1] je 2. pozice a na argv[0] je task03) jenom pro čtení
-      verbose;
-
-    do{
-      sscanf(fileCont, "%d", &i); 
-      vysledek += i;
+if(argv[0][0] != '-' && strcmp(argv[1], "-i") != 0 && strcmp(argv[1], "-f") !=0 && strcmp(argv[1], "-i") !=0){
+    for(int i = 1; i < argc; i++){
+        if(strcmp(argv[i], "-v") == 0 && strcmp(argv[2], "-f") !=0 && strcmp(argv[2], "-i") !=0){
+            arg(argc, argv);
+        }
     }
-
-    while(fscanf(fp, "%s", fileCont) != EOF); 
-
-  }
-
-  printf("\b\bsum of numbers in %s is %d", argv[2], vysledek);
-
-  return 0;
 }
 
-int inr(int argc, char* argv[]){
-  //    SEM PATRI KOD TASK03 -I -V
+while((++argv)[0]){
+    
+    if(argv[0][0] != '-'){
 
-  char fileCont[255];   
-  int i;                
-  int vysledek = 0;     
-  int cisla[10];
-  bool verbose = 0; 
-
-  if(strcmp(argv[1], "-i") == 0) {
-    int pocetCisel = 0;
-    verbose;
-
-    for(int x = 0; x < 10; x++){
-      scanf("%d", &cisla[x]); // funkce scanf udělá to, že uživatel mi dosadí číslo do x
-      if(getchar() != 'e') {  // funkce getchar() mi způsobí přerušení smyčky pomocí charakteru 'e'
-        vysledek += cisla[x]; // operátor += sčítá
-        pocetCisel++; // pocetCisel++ bude pokaždý co se provede tato podmínka přičítat 1
-        continue;
-      }
-      else{
-        break;
-      }
+        int sum = 0;
+        for(int n = 0; n < argc; n++){
+          sum += atoi(argv[n]);
+        }
+        printf("%d", sum);
+        return 0;
     }
-      if(verbose == 0){
-      printf("%d", vysledek);
-    }
-    if(strcmp(argv[2], "-v") == 0){
-      printf("\b\bsum of %d numbers from standard input is %d", pocetCisel, vysledek);
-    }
-    }
-    else if(strcmp(argv[2], "-v") == 0) {
-      int pocetCisel = 0;
-      verbose = 1;
+    
+    
 
-    for(int x = 0; x < 10; x++){
-      scanf("%d", &cisla[x]); 
-      if(getchar() != 'e') {  
-        vysledek += cisla[x]; 
-        pocetCisel++; 
-        continue;
-      }
-      else{
-        break;
-      }
+    if(argv[0][0] == '-' ){
+
+        switch(argv[0][1]){
+            
+            case 'f' :
+            {
+                FILE *fp = fopen(argv[1], "r");
+                while(fscanf(fp, "%s", fileCont) != EOF){
+                    sscanf(fileCont, "%d", &x); 
+                    vysledek += x;
+                }
+            
+                if(!argv[2]){
+                    printf("%d", vysledek);
+                    return 0;
+                }
+
+                if(argv[2][0] == '-' && argv[2][1] == 'v'){    
+                    printf("sum of numbers in %s is %d", argv[1], vysledek);
+                    return 0;
+                }
+            }
+
+            case 'i' :
+            {
+                int pocetCisel = 0;
+                for(int y = 0; y < 10; y++){
+                    scanf("%d", &cisla[y]); 
+                    if(getchar() != 'e'){
+                        vysledek += cisla[y];
+                        pocetCisel++;
+                        continue;
+                    }else{
+                        break;
+                    }
+                }
+            printf("%d", vysledek);
+            return 0;
+            }
     }
 
-  }
-
-  return 0;
+    if(argv[0][1] == 'v'){
+        if(argv[1][0] == '-'){
+            switch(argv[1][1]){
+                case 'f' :
+                {
+                    int vysledek = 0;
+                    FILE *fp = fopen(argv[2], "r");
+                    while(fscanf(fp, "%s", fileCont) != EOF){
+                        sscanf(fileCont, "%d", &x); 
+                        vysledek += x;
+                    }
+                printf("sum of numbers in %s is %d", argv[2], vysledek);
+                return 0;
+                }
+                
+                case 'i' :
+                {
+                    int pocetCisel = 0;
+                for(int y = 0; y < 10; y++){
+                    scanf("%d", &cisla[y]); 
+                    if(getchar() != 'e'){
+                        vysledek += cisla[y];
+                        pocetCisel++;
+                        continue;
+                    }
+                    else{
+                        break;
+                    }
+                }
+                printf("sum of %d numbers from standard input is %d", pocetCisel, vysledek);
+                return 0;
+            }
+        }
+    }
 }
-
-int main(int argc, char* argv[]) {
-
-    char fileCont[255];  
-    int i;                
-    int vysledek = 0;      
-    int cisla[80];
-    bool verbose = 0;
-
-    if(strcmp(argv[1], "-f") == 0){     
-      FILE *fp = fopen(argv[2], "r");   
-      verbose;
-
-    do{
-      FILE *fp = fopen(argv[2], "r");
-      sscanf(fileCont, "%d", &i); 
-      vysledek += i;
-    }
-
-    while(fscanf(fp, "%s", fileCont) != EOF); 
-
-  }
-
-  if(strcmp(argv[1], "-f") == 0){  
-    printf("%d", vysledek);
-  }
-
-  if(strcmp(argv[3], "-v") == 0){
-    v(argc, argv);
-  }
-
-  if(strcmp(argv[1], "-v") == 0){
-    vf(argc, argv);
-  }
-
-  if(strcmp(argv[1], "-i") == 0){
-    inr(argc, argv);
-  }
-
-  return 0;
-
+}
+}
 }
