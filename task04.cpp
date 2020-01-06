@@ -24,7 +24,7 @@ struct Dog : Animal {
   Dog(const char* name, const char* say) : Animal(name, say){}
 
   void whatDoesItSay() {
-    cout << "dog rika " << this->say << endl;
+    cout << this->name << " rika " << this->say << endl;
   }
 };
 
@@ -33,7 +33,7 @@ struct Fox : Animal {
   Fox(const char* name, const char* say) : Animal(name, say){}
 
   void whatDoesItSay() {
-    cout << "liska rika " << this->say <<endl;
+    cout << this->name << " rika " << this->say << endl;
   }
 };
 
