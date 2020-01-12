@@ -8,7 +8,14 @@ struct Animal {
   const char* name;
   const char* say;
   char arr[255];
-  virtual void whatDoesItSay() = 0;
+
+  virtual const char* whatDoesItSay(){
+    strcpy(arr, name);
+    strcat(arr, " rika ");
+    strcat(arr, say);
+    puts(arr);
+    return 0;
+  };
 
     Animal(const char* name, const char* say){
     this->name = name;
@@ -19,26 +26,13 @@ struct Animal {
 struct Dog : Animal {
 
   Dog(const char* name, const char* say) : Animal(name, say){}
-
     
-    void whatDoesItSay() {
-    strcpy(arr, name);
-    strcat(arr, " rika ");
-    strcat(arr, say);
-    puts(arr);
-  }
 };
 
 struct Fox : Animal {
    
   Fox(const char* name, const char* say) : Animal(name, say){}
-
-    void whatDoesItSay() {
-    strcpy(arr, name);
-    strcat(arr, " rika ");
-    strcat(arr, say);
-    puts(arr);
-  }
+    
 };
 
 int main() {
