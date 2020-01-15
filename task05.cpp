@@ -17,19 +17,23 @@ using namespace std;
 struct Button{
     virtual void waitForButton() = 0;
     virtual void hello() = 0;
+    void loop();
 };
 
 struct ButtonPC : Button{
 
-    void waitForButton(){
-        char c = getchar();
-        
-        while ( c = '\n' ){
+    void waitForButton(){  
+        loop();
+    };
+
+void loop(){
+
+    char c = getchar();
+    while (true){
             hello();
             waitForButton();
-        }; 
-
-    };
+        };
+};
 
     void hello(){
             printf("hello\n");
