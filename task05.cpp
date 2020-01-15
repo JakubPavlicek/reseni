@@ -26,14 +26,13 @@ struct ButtonPC : Button{
         loop();
     };
 
-void loop(){
-
-    char c = getchar();
-    while (true){
+    void loop(){
+        char c = getchar();
+        while (true){
             hello();
             waitForButton();
         };
-};
+    };
 
     void hello(){
             printf("hello\n");
