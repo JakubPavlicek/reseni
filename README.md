@@ -17,3 +17,6 @@ Kód funguje - "cout" jsem odstranil a nahradil ho "puts()", kterej vypíše mno
 
 ## task05
 Kód funguje
+
+## hra
+Kód funguje, sice nevím jestli tak jak bylo zadáno, protože už jsem zapomněl jak přesně znělo zadání, ale nějak +- jsem to nakódoval
