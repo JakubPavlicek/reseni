@@ -10,87 +10,82 @@ class Game{
     virtual void makeMove()=0;
     virtual void printResult()=0;
 
-    int x, y;
+    int x = 0;
+    int y = 0;
 
-    bool turn = true;
+    bool turn = false;
 
     void startGame(){
         while(checkWin() == false){
-            //turn = !turn;
+            turn = !turn;
             makeMove();
         }
         printResult();
     }
 };
 
-class Player1 : public Game{
-    public:
+class GuessGame : public Game{
+
+public:
      
-    void makeMove(){
-        for(!turn;;){
+void makeMove(){
+    switch(turn){
+        case true :
             cout << "Player1 tipnul: ";
             x = getchar();
-            if(getchar()=='\n' && x >= 97 && x <= 122){
-                return;
+            if(getchar()=='\n' && sizeof(x)<= 5 && x >= 97 && x <= 122){
+                cout << x << endl;
+                break;
             }else{
-                continue;
-            }
-            !turn;
-        }
-    };
+                cout << "Player1 zadal spatne, zkus to znovu: ";
+                x = getchar();
+                cout << x << endl;
+                break;
+            };
 
-    void printResult(){
-        cout << "Player1 won!";
-    }; 
-
-    bool checkWin(){  
-        if(x>y){
-            printResult();
-        }else{
-            return false;
-        }
-    };
-};
-
-class Player2 : public Game{
-    public:
-
-    void makeMove(){
-        for(turn;;){
+        case false :
             cout << "Player2 tipnul: ";
             y = getchar();
-            if(getchar()=='\n' && y >= 97 && y <= 122){
-                return;
+            if(getchar()=='\n' && sizeof(y)<= 5 && y >= 97 && y <= 122){
+                cout << y << endl;
+                break;
             }else{
-                continue;
-            }
-            !turn;
+                cout << "Player2 zadal spatne, zkus to znovu: ";
+                y = getchar();
+                cout << y << endl;
+                break;
+            };
         }
     };
 
-    void printResult(){
-        cout << "Player2 won!";
-    };
+void printResult(){
+    if(x >= 97 && x <= 122 && x-8>y && x+8>y){
+        cout << "Player1 won!" << endl;
+    }
+    if(y >= 97 && y <= 122 && y-8>x && y+8>x){
+        cout << "Player2 won!" << endl;
+    }
+};
 
-    bool checkWin(){
-        if(y>x){
-            printResult();
-        }else{
-            return false;
-        }
-    };
+bool checkWin(){
+    if(x-8>y && x+8>y && y != 0){ // TADY
+        return true;
+    }
+
+    if(y-8>x && y+8>x && x != 0){
+        return true;
+    }
+
+    if(x == 0 || y == 0){
+        return false;
+    }
+};
 };
 
 int main(){
 
-    
-    Player1 p1;
-    Player2 p2;
-    
-    p1.makeMove();
-    p2.makeMove();
+    GuessGame GGobj; 
 
-    p1.checkWin();
-    p2.checkWin();
+    GGobj.startGame();
 
 }
