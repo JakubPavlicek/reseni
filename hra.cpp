@@ -37,10 +37,8 @@ void makeMove(){
                 cout << x << endl;
                 break;
             }else{
-                cout << "Player1 zadal spatne, zkus to znovu: ";
-                x = getchar();
-                cout << x << endl;
-                break;
+                cout << "Player1 zadal spatne, myslim si ze podvadi, koncim hru!" << endl;
+                exit(1);
             };
 
         case false :
@@ -50,10 +48,8 @@ void makeMove(){
                 cout << y << endl;
                 break;
             }else{
-                cout << "Player2 zadal spatne, zkus to znovu: ";
-                y = getchar();
-                cout << y << endl;
-                break;
+                cout << "Player2 zadal spatne, myslim si ze podvadi, koncim hru!" << endl;
+                exit(1);
             };
     }
 };
