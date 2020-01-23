@@ -55,8 +55,8 @@ void makeMove(){
                 cout << y << endl;
                 break;
             };
-        }
-    };
+    }
+};
 
 void printResult(){
     if(x >= 97 && x <= 122 && x-8>y && x+8>y){
