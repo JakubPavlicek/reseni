@@ -12,7 +12,6 @@ public:
     string Tell(){
         return "Ninja ti udelil 20 damage";
     }
-
 };
 
 class Monster : public TellDamage{
@@ -20,7 +19,6 @@ public:
     string Tell(){
        return "Monster ti udelil 50 damage";
     }
-
 };
 
 class Enemy{
