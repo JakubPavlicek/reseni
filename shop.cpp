@@ -78,6 +78,14 @@ public:
 
 };
 
+class Cart : public Item, public Price{
+public:
+    void say(Item& i, Price& p){
+        cout << i.to_string() << " " << p.to_price() << endl;
+    }
+
+};
+
 int main(){
 
     int var_y;
@@ -94,5 +102,7 @@ int main(){
     Price pr;
     pr.get_y(var_y);
 
-    cout << it.to_string() << " " << pr.to_price() << endl;
+    Cart* cart = new Cart();
+    cart->say(it, pr);
+    free(cart);
 }
