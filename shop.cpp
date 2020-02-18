@@ -38,7 +38,6 @@ public:
         ss >> line;
         if(stringstream(line) >> id)
         if(y == id){
-            //cout << item << endl;
             return item;
         }
 
@@ -68,7 +67,6 @@ public:
         if(stringstream(line2) >> id)
         if(y == id){
             price.erase(0, 1);
-            //cout << price << endl;
             return price;
         }
 
