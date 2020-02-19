@@ -102,5 +102,5 @@ int main(){
 
     Cart* cart = new Cart();
     cart->say(it, pr);
-    free(cart);
+    delete cart;
 }
