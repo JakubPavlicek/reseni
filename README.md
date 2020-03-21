@@ -27,3 +27,6 @@ třídy Enemy. Je to vlastně takový úspornější způsob psaní kódu, že p
 pak použít na všech ostatních třídách. Další z příkladů by byl třeba nějakej Manažer firmy, ten přece nebude dělat takový ty
 podprůměrný práce jako umejvání podlahy, řešení financí a tak, ale na každou tuto specifickou práci si najme někoho, kdo to
 bude dělat za něj a manažer mu pak přesně řekne co může dělat.
+
+## task07
+Kód funguje
