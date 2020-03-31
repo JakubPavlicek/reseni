@@ -29,4 +29,4 @@ podprůměrný práce jako umejvání podlahy, řešení financí a tak, ale na 
 bude dělat za něj a manažer mu pak přesně řekne co může dělat.
 
 ## task07
-Kód funguje
+Nevím jestli jsem správně pochopil zadání, ale podle toho jak jsem to pochopil, tak jsme měli jen určit velikost Vectoru2 a uložit to do "double" proměnné, pokud ano, tak kód funguje
