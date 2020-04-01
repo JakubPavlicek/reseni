@@ -28,9 +28,7 @@ public:
 
     operator double()
     {
-        int char_size = sizeof(buffer);
-        int int_size = sizeof(x) + sizeof(y);
-        return char_size + int_size;
+        return sizeof(Vector2);
     }
 };
 
