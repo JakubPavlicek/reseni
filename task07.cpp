@@ -60,6 +60,11 @@ public:
     {
 		return Vector2b(n*x, n*y);
 	}
+	
+	Vector2b operator*(Vector2b& other)
+	{
+        return Vector2b(this->x*other.x, this->y*other.y);
+    }
 };
 
 // globální funkce: operator*(a,b) je totéž, co a*b
