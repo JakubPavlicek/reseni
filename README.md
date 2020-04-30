@@ -32,3 +32,6 @@ bude dělat za něj a manažer mu pak přesně řekne co může dělat.
 Nevím jestli jsem správně pochopil zadání, ale podle toho jak jsem to pochopil, tak jsme měli jen určit velikost Vectoru2 a uložit to do "double" proměnné, pokud ano, tak kód funguje
 JT: Velikost vektoru jsem měl na mysli matematicky, tj. v podstatě spočítání odvěsny. Z mého popisu to nebylo jednoznačné, akceptuju tedy vaše řešení. operátor násobení všem měl provést vektorový součin, ne skalární - prosím upravte.
 JP: Doplnil jsem operátor násobení, který provádí vektorový součin
+
+## task08
+Kód funguje
